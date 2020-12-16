@@ -35,7 +35,7 @@ for i in range(0, len(bors), 1):
        close.append((list(comp['CLOSE']))[0])
        n = script.index(sym[i])
        ISIN.append(isin[n])
-       imagepath.append('https://github.com/lokeshbamb18/StockScreener/blob/main/sparklines/'+sym[i]+'.png')
+       imagepath.append('https://github.com/lokeshbamb18/StockScreener/raw/main/sparklines/'+sym[i]+'.png')
        cp = comp['CLOSE'][:60]
        plt.plot(cp)
        plt.axis('off')
