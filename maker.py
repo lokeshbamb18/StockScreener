@@ -36,12 +36,14 @@ for i in range(0, len(bors), 1):
        n = script.index(sym[i])
        ISIN.append(isin[n])
        imagepath.append('https://github.com/lokeshbamb18/StockScreener/raw/main/sparklines/'+sym[i]+'.png')
-       cp = comp['CLOSE'][:60]
+       cp = list(comp['CLOSE'][:60])
+       cp.reverse()
        plt.plot(cp, linewidth = 7.0)
        plt.axis('off')
        plt.savefig('/home/lokesh/ML/Android/sparklines/' + sym[i])
        plt.clf()
               
+print(cp)
 output['Signal'] = bs
 output['Script'] = company
 output['Previous Close'] = close
