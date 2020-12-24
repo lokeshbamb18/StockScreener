@@ -51,3 +51,5 @@ output['ISIN Code'] = ISIN
 output['Image'] = imagepath
 print(output)
 output.to_excel('data.xls', index = False)
+
+
