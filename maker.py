@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
 import os, shutil
+
 folder = '/home/lokesh/ML/Android/sparklines'
 for filename in os.listdir(folder):
     file_path = os.path.join(folder, filename)
@@ -52,4 +52,22 @@ output['Image'] = imagepath
 print(output)
 output.to_excel('data.xls', index = False)
 
-
+screener = screener.fillna(0)
+first = list(screener['Date'])
+second = list(screener['Price'])
+third = list(screener['Signal'])
+holdings = []
+for i in range(0, len(third), 1):
+	if(third[i] == 0 and third[i-1] == 'buy'):
+		if(first[i] == 'Sell'):
+			holdings.append(second[i])
+		else:
+			holdings.append(first[i])
+sector = list(isin_data['Industry'])
+piedata = dict.fromkeys(sector, 0)
+for i in holdings:
+	n = script.index(i)
+	piedata[sector[n]] += 1
+#print(piedata)
+out = pd.DataFrame(list(piedata.items()), columns=['Sector', 'Quantity'])
+out.to_excel('sectorial.xls', index = False)
