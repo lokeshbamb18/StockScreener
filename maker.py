@@ -70,4 +70,6 @@ for i in holdings:
 	piedata[sector[n]] += 1
 #print(piedata)
 out = pd.DataFrame(list(piedata.items()), columns=['Sector', 'Quantity'])
+color=['#928b92','#0ca404','#ea7406','#06ea87','#067cea','#5dea06','#1c4602','#c05c26','#e6c700','#000000','#000dc7','#7a3701','#6a7a01','#8e011b','#f0f901','#fe01a5','#ffffff','#f90101']
+out['Colour'] = color
 out.to_excel('sectorial.xls', index = False)
