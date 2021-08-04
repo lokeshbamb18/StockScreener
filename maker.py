@@ -29,7 +29,7 @@ imagepath = []
 for i in range(0, len(bors), 1):
     if(bors[i] == 'Buy' or bors[i] == 'Sell'):
        #print(bors[i], sym[i])
-       company.append(sym[i])
+       company.append(sym[i]+"-EQ")
        bs.append(bors[i])
        comp = pd.read_csv('/home/lokesh/ML/NIFTY-200/' + sym[i] + '.csv')
        close.append((list(comp['CLOSE']))[0])
