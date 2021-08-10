@@ -25,6 +25,7 @@ script = list(isin_data['Symbol'])
 isin = list(isin_data['ISIN Code'])
 ISIN = []
 imagepath = []
+date = []
 
 for i in range(0, len(bors), 1):
     if(bors[i] == 'Buy' or bors[i] == 'Sell'):
@@ -33,6 +34,7 @@ for i in range(0, len(bors), 1):
        bs.append(bors[i])
        comp = pd.read_csv('/home/lokesh/ML/NIFTY-200/' + sym[i] + '.csv')
        close.append((list(comp['CLOSE']))[0])
+       date.append((list(comp['DATE']))[0])
        n = script.index(sym[i])
        ISIN.append(isin[n])
        imagepath.append('https://github.com/lokeshbamb18/StockScreener/raw/main/sparklines/'+sym[i]+'.png')
@@ -48,7 +50,10 @@ output['Signal'] = bs
 output['Script'] = company
 output['Previous Close'] = close
 output['ISIN Code'] = ISIN
+output['Date'] = date
 output['Image'] = imagepath
+output.index += 1
+output = output.sort_values(by = 'Signal')
 print(output)
 output.to_excel('data.xls', index = False)
 
